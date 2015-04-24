@@ -49,9 +49,11 @@ callF('435-215-9248');
 
   //Code Here
 
-var callOnce = function(cb, n) {
-  return function() {
-    cb();
+var makeCounter = function() {
+  var num = 0;
+  return function () {
+    num += 1;
+    return num;
   };
 };
 
@@ -65,6 +67,50 @@ var callOnce = function(cb, n) {
 
 //Next Problem
 
+var callOnce = function(cb, n) {
+  var num = 0;
+  return function() {
+    num += 1;
+    if (n <= 2) {
+      return cb();
+    }
+    else{
+      alert('STAHHP');
+    }
+  }
+}
+
+
+var limitedFunc = callONce(functon(){alert('hi')}, 2);
+limitedFunc(); //'hi'
+limitedFunc(); //'hi'
+limitedFunc(); //'STAHHP'
+limitedFunc(); //'STAHHP'
+
+-------------------------------
+
+var attempt = 3; // Variable to count number of attempts.
+// Below function Executes on click of login button.
+function validate(){
+  var username = document.getElementById("username").value;
+  var password = document.getElementById("password").value;
+  if ( username == "Formget" && password == "formget#123"){
+    alert ("Login successfully");
+    window.location = "success.html"; // Redirecting to other page.
+    return false;
+  }
+  else{
+    attempt --;// Decrementing by one.
+    alert("You have left "+attempt+" attempt;");
+      // Disabling fields after 3 attempts.
+  if( attempt == 0){
+    document.getElementById("username").disabled = true;
+    document.getElementById("password").disabled = true;
+    document.getElementById("submit").disabled = true;
+    return false;
+  }
+  }
+}
 
 
 /*
