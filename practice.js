@@ -11,11 +11,13 @@ var outer = function(){
 
   //Code Here
 
+var inner = outer();
+
 //Once you do that, invoke inner.
 
   //Code Here
 
-
+inner();
 
 //Next problem
 
@@ -34,7 +36,8 @@ var callFriend = function(){
 
   //Code Here
 
-
+var callF = callFriend();
+callF('435-215-9248');
 
 //Next Problem
 
@@ -45,6 +48,13 @@ var callFriend = function(){
 */
 
   //Code Here
+
+var callOnce = function(cb, n) {
+  return function() {
+    cb();
+  };
+};
+
   var count = makeCounter();
   count() // 1
   count() // 2
