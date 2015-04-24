@@ -71,7 +71,7 @@ var callOnce = function(cb, n) {
   var num = 0;
   return function() {
     num += 1;
-    if (n <= 2) {
+    if (num <= 2) {
       return cb();
     }
     else{
@@ -81,7 +81,7 @@ var callOnce = function(cb, n) {
 }
 
 
-var limitedFunc = callONce(functon(){alert('hi')}, 2);
+var limitedFunc = callOnce(function(){alert('hi')}, 2);
 limitedFunc(); //'hi'
 limitedFunc(); //'hi'
 limitedFunc(); //'STAHHP'
